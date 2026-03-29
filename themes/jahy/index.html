@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<style type="text/css">
+		:root {
+			--jahy-bqackgrounfd: url("https://r2.fakecrime.bio/uploads/078073bd-9c89-4bbd-b776-56c88543ad71.png");
+			--url: url("https://r2.fakecrime.bio/uploads/078073bd-9c89-4bbd-b776-56c88543ad71.png");
+		}
+
+		html, body {
+			background-color: #211838;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			font-family: Consolas, 'Courier New', monospace;
+			color: white;
+		}
+
+		.margin:first-child {
+			background-image: var(--url);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+
+		.lines-content:nth-of-type(1),
+		.monaco-editor-background:nth-of-type(1) {
+			background-image: var(--url);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+
+		#background2custhatonelookslikedogshitscrewu {
+			position: fixed;
+			top: 0; left: 0;
+			width: 100%; height: 100%;
+			background-image: var(--jahy-bqackgrounfd);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		#imgonnadickyoudown {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			pointer-events: none;
+			z-index: 9999;
+			opacity: 0.92;
+		}
+		#waifu img {
+			display: block;
+			width: auto;
+			height: auto;
+		}
+
+	</style>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+
+	<div id="background2custhatonelookslikedogshitscrewu"></div>
+
+	<div id="imgonnadickyoudown">
+		<img id="man-fck-your-butt" src="https://r2.fakecrime.bio/uploads/dfade351-1679-4e9e-94f6-499dc1fc55fb.png" alt="" />
+	</div>
+
+	<div id="container" style="width:100%;height:100%;position:relative;z-index:2;"></div>
+
+	<script>
+		(function () {
+			var img = document.getElementById('man-fck-your-butt');
+			if (img) {
+				img.style.width  = 'auto';
+				img.style.height = 'auto';
+			}
+		})();
+	</script>
+
+	<script src="vs/loader.js"></script>
+	<script type="text/javascript">
+		require.config({ paths: { 'vs': 'vs' } });
+
+		var GetText, SetText, SetTheme, SetScroll, ShowErr, Refresh;
+		var SwitchMinimap, SwitchReadonly, SwitchRenderWhitespace, SwitchLinks;
+		var SwitchLineHeight, SwitchFontSize, SwitchFolding, SwitchAutoIndent;
+		var SwitchFontFamily, SwitchFontLigatures, AddIntellisense;
+		var editor;
+		var Proposals = [];
+
+		require(['vs/editor/editor.main'], function () {
+			function getDependencyProposals() {
+				var out = [];
+				for (var i = 0; i < Proposals.length; i++) {
+					var el = Proposals[i], ne = {};
+					for (var k in el) { if (k !== '__children__') ne[k] = el[k]; }
+					out.push(ne);
+				}
+				return out;
+			}
+
+			monaco.editor.defineTheme('net-theme-light', {
+				base: 'vs', inherit: true,
+				rules: [
+					{ token: 'global', foreground: '000000' },
+					{ token: 'keyword', foreground: 'ff6a00' },
+					{ token: 'comment', foreground: '666666' },
+					{ token: 'number', foreground: 'ffc600' },
+					{ token: 'string', foreground: 'ff8c3a' },
+				]
+			});
+
+			monaco.editor.defineTheme('net-theme-dark', {
+				base: 'vs-dark', inherit: true,
+				rules: [
+					{ token: 'global', foreground: 'FFFFFF', fontStyle: 'bold' },
+					{ token: 'keyword', foreground: 'ff6a00', fontStyle: 'bold' },
+					{ token: 'comment', foreground: '666666' },
+					{ token: 'number', foreground: 'ffc600' },
+					{ token: 'string', foreground: 'ff8c3a' },
+				]
+			});
+
+			monaco.editor.defineTheme('PDark', {
+				base: 'vs-dark', inherit: true,
+				rules: [
+					{ token: '',                                    foreground: '#F8F8F2' },
+					{ token: 'comment',                             foreground: '#816F93', fontStyle: 'italic' },
+					{ token: 'string',                              foreground: '#f3b085' },
+					{ token: 'longstring',                          foreground: '#f3b085' },
+					{ token: 'number',                              foreground: '#EA7797' },
+					{ token: 'constant.numeric',                    foreground: '#EA7797' },
+					{ token: 'constants',                           foreground: '#EA7797' },
+					{ token: 'constant.language',                   foreground: '#D53232' },
+					{ token: 'keyword',                             foreground: '#D53232' },
+					{ token: 'storage.type',                        foreground: '#D53232' },
+					{ token: 'keyword.operator',                    foreground: '#8BEF85' },
+					{ token: 'operator',                            foreground: '#8BEF85' },
+					{ token: 'delimiter.bracket',                   foreground: '#8BEF85' },
+					{ token: 'delimiter.parenthesis',               foreground: '#8BEF85' },
+					{ token: 'delimiter.array',                     foreground: '#8BEF85' },
+					{ token: 'delimiter.longstring',                foreground: '#8BEF85' },
+					{ token: 'delimiter',                           foreground: '#F8F8F2' },
+					{ token: 'entity.name.function',                foreground: '#9581EC' },
+					{ token: 'support.function',                    foreground: '#9581EC' },
+					{ token: 'support.function.library',            foreground: '#9581EC' },
+					{ token: 'entity.name.type',                    foreground: '#eec45e' },
+					{ token: 'entity.name.type.alias',              foreground: '#eec45e' },
+					{ token: 'support.type',                        foreground: '#eec45e' },
+					{ token: 'variable.object.property',            foreground: '#F8F8F2' },
+					{ token: 'variable.other.constant',             foreground: '#E77FD5' },
+					{ token: 'variable.language.self',              foreground: '#D53232' },
+					{ token: 'variable.parameter.function',         foreground: '#f3b085' },
+					{ token: 'variable.parameter',                  foreground: '#f3b085' },
+					{ token: 'global',                              foreground: '#E77FD5' },
+					{ token: 'punctuation.definition.typeparameters', foreground: '#8BEF85' },
+					{ token: 'punctuation.definition.parameters',   foreground: '#F8F8F2' },
+					{ token: 'punctuation.definition.block',        foreground: '#F8F8F2' },
+					{ token: 'punctuation.separator.arguments',     foreground: '#F8F8F2' },
+					{ token: 'punctuation.separator.table',         foreground: '#F8F8F2' },
+					{ token: 'string.escape',                       foreground: '#8BEF85' },
+					{ token: 'string.delimeter',                    foreground: '#8BEF85' },
+					{ token: 'invalid',                             foreground: '#ff2525', fontStyle: 'underline' },
+				],
+				colors: {
+					'editor.background':                      '#00000000',
+					'editor.foreground':                      '#F8F8F2',
+					'editor.selectionBackground':             '#452346',
+					'editor.selectionHighlightBackground':    '#2a1947',
+					'editor.lineHighlightBackground':         '#22173877',
+					'editor.wordHighlightBackground':         '#2a1947AA',
+					'editor.findMatchBackground':             '#452346',
+					'editor.findMatchBorder':                 '#874488',
+					'editor.findMatchHighlightBackground':    '#7B1212AA',
+					'editorCursor.foreground':                '#874488',
+					'editorLineNumber.foreground':            '#656079',
+					'editorLineNumber.activeForeground':      '#874488',
+					'editorIndentGuide.background':           '#322252',
+					'editorIndentGuide.activeBackground':     '#322252',
+					'editorBracketMatch.border':              '#874488',
+					'editorSuggestWidget.background':         '#1e1430',
+					'editorSuggestWidget.border':             '#1b102e',
+					'editorSuggestWidget.foreground':         '#cbcbcb',
+					'editorSuggestWidget.selectedBackground': '#452346',
+					'editorSuggestWidget.highlightForeground':'#874488',
+					'editorWidget.background':                '#1e1430',
+					'editorWidget.border':                    '#874488',
+					'editorHoverWidget.border':               '#322252',
+					'editorError.foreground':                 '#ff2525',
+					'textCodeBlock.background':               '#2c0e29',
+					'scrollbarSlider.background':             '#8744885A',
+					'scrollbarSlider.hoverBackground':        '#8744889A',
+					'scrollbarSlider.activeBackground':       '#8744889A',
+				}
+			});
+
+			require(['vs/basic-languages/monaco.contribution'], function () {
+				monaco.languages.registerCompletionItemProvider('lua', {
+					provideCompletionItems: function (model, position) {
+						return { suggestions: getDependencyProposals() };
+					},
+					triggerCharacters: ['.', ':', '"'],
+				});
+
+				editor = monaco.editor.create(document.getElementById('container'), {
+					value: 'print("hello!");',
+					language: 'lua',
+					theme: 'PDark',
+					fontSize: '16px',
+					fontFamily: "'JetBrains Mono', Consolas, 'Courier New', monospace",
+					folding: true,
+					dragAndDrop: true,
+					links: true,
+					minimap: { enabled: false },
+					showFoldingControls: 'always',
+					smoothScrolling: true,
+					stopRenderingLineAfter: 6500,
+					cursorBlinking: 'smooth',
+					cursorSmoothCaretAnimation: true,
+					foldingHighlight: false,
+					fontLigatures: true,
+					formatOnPaste: true,
+					showDeprecated: true,
+					scrollBeyondLastLine: false,
+					suggest: { snippetsPreventQuickSuggestions: false },
+					padding: { top: 6 }
+				});
+
+				try {
+					if (CefSharp) {
+						editor.onKeyDown(function (e) {
+							if (!(e.altKey || e.ctrlKey || e.shiftKey || e.metaKey)) {
+								if (e.key !== 'Backspace' || editor.getValue() !== '')
+									CefSharp.PostMessage('keydown');
+							}
+						});
+					}
+				} catch { }
+
+				editor.getModel().updateOptions({ insertSpaces: false });
+			});
+
+			window.onresize = function () { editor.layout(); };
+
+			Cut       = function () { editor.focus(); document.execCommand('cut'); };
+			Copy      = function () { editor.focus(); document.execCommand('copy'); };
+			Paste     = function () { editor.focus(); document.execCommand('paste'); };
+			Undo      = function () { editor.focus(); document.execCommand('undo'); };
+			Redo      = function () { editor.focus(); document.execCommand('redo'); };
+			Delete    = function () { editor.focus(); document.execCommand('delete'); };
+			SelectAll = function () { editor.focus(); document.execCommand('selectAll'); };
+
+			SwitchSmoothScrolling      = function (f) { editor.updateOptions({ smoothScrolling: f }); };
+			SwitchSmoothCaretAnimation = function (f) { editor.updateOptions({ cursorSmoothCaretAnimation: f }); };
+
+			GetText = function () { return String(editor.getValue()); };
+			SetText = function (x) {
+				try { editor.setValue(JSON.parse(`${String(x)}`)); }
+				catch (e) { editor.setValue(String(x)); }
+			};
+
+			GetProposals = function () { return Proposals; };
+
+			OnDidChangeContent = function (callback) {
+				return editor.onDidChangeModelContent(function () { callback(editor.getValue()); });
+			};
+			OnDidChangeCursorPosition = function (callback) {
+				return editor.onDidChangeCursorPosition(function (e) { callback(e.position); });
+			};
+
+			SetTheme = function (themeName) {
+				if (themeName === 'PDark') monaco.editor.setTheme('PDark');
+				if (themeName === 'Dark')  monaco.editor.setTheme('net-theme-dark');
+				if (themeName === 'Light') monaco.editor.setTheme('net-theme-light');
+			};
+
+			SwitchMinimap          = function (f)  { editor.updateOptions({ minimap: { enabled: f } }); };
+			SwitchReadonly         = function (f)  { editor.updateOptions({ readOnly: f }); };
+			SwitchRenderWhitespace = function (op) { editor.updateOptions({ renderWhitespace: op }); };
+			SwitchLinks            = function (f)  { editor.updateOptions({ links: f }); };
+			SwitchLineHeight       = function (n)  { editor.updateOptions({ lineHeight: n }); };
+			SwitchFontSize         = function (n)  { editor.updateOptions({ fontSize: n }); };
+			SwitchFolding          = function (f)  { editor.updateOptions({ folding: f }); };
+			SwitchAutoIndent       = function (f)  { editor.updateOptions({ autoIndent: f }); };
+			SwitchWordWrap         = function (f)  { editor.updateOptions({ wordWrap: f }); };
+			SwitchFontFamily       = function (n)  { editor.updateOptions({ fontFamily: n }); };
+			SwitchFontLigatures    = function (f)  { editor.updateOptions({ fontLigatures: f }); };
+
+			ShowErr = function (line, column, endline, endcolumn, errMessage) {
+				editor.revealPositionInCenter({ lineNumber: line, column: column });
+				editor.deltaDecorations([], [{
+					range: new monaco.Range(line, column, endline, endcolumn),
+					options: {
+						inlineClassName: 'squiggly-error',
+						hoverMessage: { value: errMessage }
+					}
+				}]);
+			};
+
+			AddSnippet = function (kindName, snippetName, data) {
+				var snippet = {
+					insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+					kind: monaco.languages.CompletionItemKind[kindName],
+				};
+				for (var key in data) {
+					var value = data[key];
+					if (key === 'insertText' && typeof value === 'object') value = value.join('\n');
+					snippet[key] = value;
+				}
+				if (!snippet.label) snippet.label = snippetName;
+				if (!snippet.insertText) snippet.insertText = snippetName;
+				Proposals.push(snippet);
+			};
+
+			AddRawSnippet = function (data) { Proposals.push(data); };
+
+			SetScroll = function (line) { editor.revealLineInCenter({ lineNumber: line }); };
+
+			Refresh = function () {
+				var text = getText();
+				setText('');
+				editor.trigger('keyboard', 'type', { text: text });
+			};
+		});
+	</script>
+</body>
+</html>
